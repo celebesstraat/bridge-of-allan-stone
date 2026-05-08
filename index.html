@@ -1,0 +1,1470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bridge of Allan Stone | Master Stonemason | Stirling, Scotland</title>
+    <meta name="description" content="Malcolm Conway — master stonemason with 30 years experience. Heritage restoration, new build, and bespoke stonework across Stirling, Edinburgh, Glasgow and beyond.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --charcoal: #1A1A1A;
+            --charcoal-light: #242424;
+            --cream: #F4EFE6;
+            --cream-dark: #E6DED2;
+            --sandstone: #B8956A;
+            --sandstone-dark: #9A7A52;
+            --slate: #6B7280;
+            --white: #FFFFFF;
+            --light-stone: #EAE3D8;
+            --font-serif: 'Cormorant Garamond', Georgia, serif;
+            --font-sans: 'Inter', system-ui, sans-serif;
+            --transition: 0.3s ease;
+        }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--font-sans);
+            background: var(--cream);
+            color: var(--charcoal);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        img { display: block; max-width: 100%; height: auto; }
+        a { color: inherit; text-decoration: none; }
+
+        h1, h2, h3, h4 {
+            font-family: var(--font-serif);
+            font-weight: 400;
+            line-height: 1.15;
+        }
+
+        .section-label {
+            font-family: var(--font-sans);
+            font-size: 0.68rem;
+            font-weight: 600;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--sandstone);
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section { padding: 7rem 0; }
+        .section--dark { background: var(--charcoal); color: var(--cream); }
+        .section--stone { background: var(--light-stone); }
+
+        /* ── NAV ─────────────────────────────────────── */
+        .nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 100;
+            padding: 1.5rem 2.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: background 0.4s ease, padding 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .nav.scrolled {
+            background: rgba(26,26,26,0.97);
+            padding: 1rem 2.5rem;
+            box-shadow: 0 2px 30px rgba(0,0,0,0.35);
+        }
+
+        .nav-logo {
+            font-family: var(--font-serif);
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: var(--white);
+            letter-spacing: 0.03em;
+        }
+
+        .nav-logo span { color: var(--sandstone); }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2.25rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-size: 0.72rem;
+            font-weight: 500;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.75);
+            transition: color var(--transition);
+        }
+
+        .nav-links a:hover { color: var(--sandstone); }
+
+        .nav-cta {
+            background: var(--sandstone) !important;
+            color: var(--white) !important;
+            padding: 0.6rem 1.4rem !important;
+            letter-spacing: 0.08em !important;
+        }
+
+        .nav-cta:hover { background: var(--sandstone-dark) !important; }
+
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 4px;
+            background: none;
+            border: none;
+        }
+
+        .nav-toggle span {
+            display: block;
+            width: 22px;
+            height: 1.5px;
+            background: white;
+            transition: var(--transition);
+        }
+
+        /* ── HERO ────────────────────────────────────── */
+        .hero {
+            position: relative;
+            height: 100vh;
+            min-height: 640px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-slides { position: absolute; inset: 0; }
+
+        .hero-slide {
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 1.8s ease-in-out;
+        }
+
+        .hero-slide.active { opacity: 1; }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                160deg,
+                rgba(0,0,0,0.25) 0%,
+                rgba(0,0,0,0.55) 60%,
+                rgba(0,0,0,0.72) 100%
+            );
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: var(--white);
+            max-width: 820px;
+            padding: 0 2rem;
+        }
+
+        .hero-eyebrow {
+            font-size: 0.68rem;
+            font-weight: 600;
+            letter-spacing: 0.28em;
+            text-transform: uppercase;
+            color: var(--sandstone);
+            margin-bottom: 1.75rem;
+        }
+
+        .hero-title {
+            font-family: var(--font-serif);
+            font-size: clamp(2.8rem, 6.5vw, 5.5rem);
+            font-weight: 300;
+            line-height: 1.08;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-title em {
+            font-style: italic;
+            color: rgba(255,255,255,0.8);
+        }
+
+        .hero-subtitle {
+            font-size: 1rem;
+            font-weight: 300;
+            color: rgba(255,255,255,0.75);
+            margin-bottom: 2.75rem;
+            max-width: 480px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.7;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.9rem 2.25rem;
+            font-family: var(--font-sans);
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            border: none;
+            cursor: pointer;
+            transition: all var(--transition);
+        }
+
+        .btn-primary { background: var(--sandstone); color: var(--white); }
+        .btn-primary:hover { background: var(--sandstone-dark); }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--white);
+            border: 1px solid rgba(255,255,255,0.45);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--white);
+            background: rgba(255,255,255,0.08);
+        }
+
+        .hero-indicators {
+            position: absolute;
+            bottom: 2.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 0.6rem;
+            z-index: 2;
+        }
+
+        .hero-dot {
+            width: 36px;
+            height: 2px;
+            background: rgba(255,255,255,0.25);
+            cursor: pointer;
+            transition: background var(--transition);
+            border: none;
+            padding: 0;
+        }
+
+        .hero-dot.active { background: var(--sandstone); }
+
+        /* ── CREDENTIALS ─────────────────────────────── */
+        .credentials {
+            background: var(--charcoal);
+            padding: 1.1rem 0;
+            overflow: hidden;
+        }
+
+        .cred-track {
+            display: flex;
+            align-items: center;
+            gap: 0;
+            animation: marquee 35s linear infinite;
+            width: max-content;
+        }
+
+        .cred-track:hover { animation-play-state: paused; }
+
+        .cred-set {
+            display: flex;
+            align-items: center;
+            gap: 2.5rem;
+            padding-right: 2.5rem;
+        }
+
+        .cred-name {
+            font-family: var(--font-serif);
+            font-size: 0.9rem;
+            font-weight: 300;
+            color: rgba(255,255,255,0.6);
+            white-space: nowrap;
+            letter-spacing: 0.04em;
+        }
+
+        .cred-dot {
+            width: 3px;
+            height: 3px;
+            border-radius: 50%;
+            background: var(--sandstone);
+            flex-shrink: 0;
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* ── ABOUT ───────────────────────────────────── */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 5fr 6fr;
+            gap: 7rem;
+            align-items: center;
+        }
+
+        .about-image-wrap {
+            position: relative;
+        }
+
+        .about-image-border {
+            position: absolute;
+            top: -1.5rem;
+            left: -1.5rem;
+            right: 1.5rem;
+            bottom: 1.5rem;
+            border: 1px solid var(--sandstone);
+            opacity: 0.6;
+            z-index: 0;
+        }
+
+        .about-image-wrap img {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            aspect-ratio: 3 / 4;
+            object-fit: cover;
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.75rem;
+            margin: 2.75rem 0;
+        }
+
+        .stat { border-left: 2px solid var(--sandstone); padding-left: 1rem; }
+
+        .stat-number {
+            font-family: var(--font-serif);
+            font-size: 2.75rem;
+            font-weight: 300;
+            line-height: 1;
+            color: var(--charcoal);
+        }
+
+        .stat-label {
+            font-size: 0.72rem;
+            font-weight: 500;
+            letter-spacing: 0.06em;
+            color: var(--slate);
+            margin-top: 0.3rem;
+        }
+
+        .about-text h2 {
+            font-size: clamp(2rem, 3vw, 3rem);
+            margin-bottom: 1.75rem;
+        }
+
+        .about-text p {
+            color: var(--slate);
+            margin-bottom: 1.1rem;
+            line-height: 1.85;
+            font-size: 0.95rem;
+        }
+
+        /* ── SERVICES ────────────────────────────────── */
+        .services-header {
+            text-align: center;
+            margin-bottom: 4.5rem;
+        }
+
+        .services-header h2 {
+            font-size: clamp(2rem, 3.5vw, 3.5rem);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            border: 1px solid var(--cream-dark);
+        }
+
+        .service-card {
+            padding: 2.75rem;
+            border-right: 1px solid var(--cream-dark);
+            border-bottom: 1px solid var(--cream-dark);
+            transition: background var(--transition);
+            background: var(--light-stone);
+        }
+
+        .service-card:nth-child(3n) { border-right: none; }
+        .service-card:nth-child(4),
+        .service-card:nth-child(5),
+        .service-card:nth-child(6) { border-bottom: none; }
+
+        .service-card:hover { background: var(--cream); }
+
+        .service-icon {
+            width: 38px;
+            height: 38px;
+            margin-bottom: 1.5rem;
+            color: var(--sandstone);
+        }
+
+        .service-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .service-card p {
+            font-size: 0.875rem;
+            color: var(--slate);
+            line-height: 1.75;
+        }
+
+        /* ── PORTFOLIO ───────────────────────────────── */
+        .portfolio-header {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            margin-bottom: 2.5rem;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+
+        .portfolio-header h2 { font-size: clamp(2rem, 3.5vw, 3.5rem); }
+
+        .portfolio-filters {
+            display: flex;
+            gap: 0.4rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 0.45rem 1.1rem;
+            font-family: var(--font-sans);
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            background: transparent;
+            border: 1px solid var(--cream-dark);
+            color: var(--slate);
+            cursor: pointer;
+            transition: all var(--transition);
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--charcoal);
+            border-color: var(--charcoal);
+            color: var(--white);
+        }
+
+        .portfolio-masonry {
+            columns: 3;
+            column-gap: 1rem;
+        }
+
+        .portfolio-item {
+            break-inside: avoid;
+            margin-bottom: 1rem;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            display: block;
+        }
+
+        .portfolio-item.hidden { display: none; }
+
+        .portfolio-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .portfolio-item:hover img { transform: scale(1.04); }
+
+        .portfolio-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0) 55%);
+            opacity: 0;
+            transition: opacity var(--transition);
+            display: flex;
+            align-items: flex-end;
+            padding: 1.25rem;
+        }
+
+        .portfolio-item:hover .portfolio-overlay { opacity: 1; }
+
+        .portfolio-label {
+            font-size: 0.8rem;
+            color: var(--white);
+            font-weight: 500;
+            line-height: 1.35;
+        }
+
+        .portfolio-label small {
+            display: block;
+            opacity: 0.65;
+            font-weight: 400;
+            margin-top: 0.15rem;
+        }
+
+        /* ── LIGHTBOX ────────────────────────────────── */
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.96);
+            z-index: 300;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .lightbox.open { display: flex; }
+
+        .lightbox-inner {
+            position: relative;
+            max-width: 1100px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .lightbox-img {
+            max-height: 82vh;
+            max-width: 100%;
+            object-fit: contain;
+        }
+
+        .lightbox-caption {
+            color: rgba(255,255,255,0.55);
+            font-size: 0.82rem;
+            margin-top: 1rem;
+            text-align: center;
+            letter-spacing: 0.04em;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: -3.5rem;
+            right: 0;
+            background: none;
+            border: none;
+            color: rgba(255,255,255,0.6);
+            font-size: 1.4rem;
+            cursor: pointer;
+            transition: color var(--transition);
+            padding: 0.5rem;
+            line-height: 1;
+        }
+
+        .lightbox-close:hover { color: var(--white); }
+
+        .lb-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: white;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all var(--transition);
+            font-size: 1.2rem;
+        }
+
+        .lb-nav:hover { background: rgba(255,255,255,0.14); border-color: rgba(255,255,255,0.5); }
+        .lb-prev { left: -5rem; }
+        .lb-next { right: -5rem; }
+
+        /* ── TESTIMONIALS ────────────────────────────── */
+        .testimonials-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .testimonials-header h2 {
+            font-size: clamp(2rem, 3.5vw, 3.5rem);
+            color: var(--cream);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .testimonial-card {
+            background: rgba(255,255,255,0.035);
+            border: 1px solid rgba(255,255,255,0.07);
+            padding: 2.75rem;
+        }
+
+        .t-quote {
+            font-family: var(--font-serif);
+            font-size: 4.5rem;
+            line-height: 0.8;
+            color: var(--sandstone);
+            opacity: 0.45;
+            margin-bottom: -1rem;
+            display: block;
+        }
+
+        .t-text {
+            font-family: var(--font-serif);
+            font-size: 1.1rem;
+            font-style: italic;
+            color: rgba(255,255,255,0.82);
+            line-height: 1.75;
+            margin-bottom: 1.75rem;
+        }
+
+        .t-project {
+            font-size: 0.68rem;
+            font-weight: 600;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--sandstone);
+            margin-bottom: 0.4rem;
+        }
+
+        .t-author {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.4);
+        }
+
+        /* ── CONTACT ─────────────────────────────────── */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 5fr 7fr;
+            gap: 7rem;
+            align-items: start;
+        }
+
+        .contact-info h2 {
+            font-size: clamp(1.75rem, 2.5vw, 2.75rem);
+            margin-bottom: 1.25rem;
+        }
+
+        .contact-info p {
+            color: var(--slate);
+            font-size: 0.9rem;
+            line-height: 1.85;
+            margin-bottom: 1rem;
+        }
+
+        .contact-direct {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            margin-top: 2rem;
+        }
+
+        .contact-link {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 1.25rem;
+            border: 1px solid var(--cream-dark);
+            background: var(--white);
+            transition: all var(--transition);
+        }
+
+        .contact-link:hover {
+            border-color: var(--sandstone);
+            transform: translateX(3px);
+        }
+
+        .cl-icon {
+            width: 20px;
+            height: 20px;
+            color: var(--sandstone);
+            flex-shrink: 0;
+        }
+
+        .cl-text { font-size: 0.9rem; font-weight: 500; display: block; }
+        .cl-sub { font-size: 0.73rem; color: var(--slate); display: block; margin-top: 0.1rem; }
+
+        .contact-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.9rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.45rem;
+        }
+
+        .form-group.span2 { grid-column: 1 / -1; }
+
+        .form-group label {
+            font-size: 0.68rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--slate);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            padding: 0.85rem 1rem;
+            background: var(--white);
+            border: 1px solid var(--cream-dark);
+            color: var(--charcoal);
+            font-family: var(--font-sans);
+            font-size: 0.9rem;
+            transition: border-color var(--transition);
+            border-radius: 0;
+            appearance: none;
+            -webkit-appearance: none;
+        }
+
+        .form-group select {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath fill='none' stroke='%236B7280' stroke-width='1.5' d='M1 1l4 4 4-4'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            padding-right: 2.5rem;
+            cursor: pointer;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--sandstone);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 130px;
+        }
+
+        .form-submit { grid-column: 1 / -1; }
+
+        .form-submit .btn {
+            width: 100%;
+            justify-content: center;
+            padding: 1.1rem 2rem;
+        }
+
+        /* ── FOOTER ──────────────────────────────────── */
+        .footer {
+            background: var(--charcoal-light);
+            padding: 3.5rem 0 2rem;
+            color: rgba(255,255,255,0.5);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-brand {
+            font-family: var(--font-serif);
+            font-size: 1.25rem;
+            color: var(--white);
+            margin-bottom: 0.75rem;
+            display: block;
+        }
+
+        .footer-brand span { color: var(--sandstone); }
+
+        .footer-tagline {
+            font-size: 0.85rem;
+            line-height: 1.75;
+            max-width: 300px;
+        }
+
+        .footer-col h4 {
+            font-family: var(--font-sans);
+            font-size: 0.68rem;
+            font-weight: 600;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.85);
+            margin-bottom: 1.1rem;
+        }
+
+        .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.55rem; }
+
+        .footer-col ul a {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.45);
+            transition: color var(--transition);
+        }
+
+        .footer-col ul a:hover { color: var(--sandstone); }
+
+        .footer-address {
+            font-size: 0.82rem;
+            line-height: 1.8;
+            margin-top: 1.1rem;
+            font-style: normal;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.07);
+            padding-top: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 0.78rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .footer-fb {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: rgba(255,255,255,0.4);
+            transition: color var(--transition);
+            font-size: 0.82rem;
+        }
+
+        .footer-fb:hover { color: var(--sandstone); }
+
+        /* ── SCROLL FADE ─────────────────────────────── */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.65s ease, transform 0.65s ease;
+        }
+
+        .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+        /* ── RESPONSIVE ──────────────────────────────── */
+        @media (max-width: 1024px) {
+            .about-grid { grid-template-columns: 1fr; gap: 4rem; }
+            .about-image-wrap { max-width: 480px; }
+            .services-grid { grid-template-columns: repeat(2, 1fr); }
+            .service-card:nth-child(3n) { border-right: 1px solid var(--cream-dark); }
+            .service-card:nth-child(2n) { border-right: none; }
+            .service-card:nth-child(4),
+            .service-card:nth-child(5) { border-bottom: 1px solid var(--cream-dark); }
+            .service-card:nth-child(5),
+            .service-card:nth-child(6) { border-bottom: none; }
+            .portfolio-masonry { columns: 2; }
+            .testimonials-grid { grid-template-columns: 1fr; }
+            .contact-grid { grid-template-columns: 1fr; gap: 4rem; }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            .section { padding: 5rem 0; }
+            .nav-links { display: none; }
+            .nav-toggle { display: flex; }
+            .services-grid { grid-template-columns: 1fr; }
+            .service-card { border-right: none !important; }
+            .portfolio-masonry { columns: 1; }
+            .portfolio-header { flex-direction: column; align-items: flex-start; }
+            .about-stats { grid-template-columns: 1fr 1fr; }
+            .contact-form { grid-template-columns: 1fr; }
+            .contact-form .form-group { grid-column: auto !important; }
+            .form-submit { grid-column: auto !important; }
+            .footer-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+            .footer-bottom { flex-direction: column; text-align: center; }
+            .lb-prev { left: -2.5rem; }
+            .lb-next { right: -2.5rem; }
+            .hero-title { font-size: clamp(2.2rem, 8vw, 3.2rem); }
+        }
+
+        .nav-links.open {
+            display: flex !important;
+            flex-direction: column;
+            position: fixed;
+            top: 0; right: 0; bottom: 0;
+            width: 75%;
+            max-width: 290px;
+            background: var(--charcoal);
+            padding: 5rem 2.5rem 2rem;
+            gap: 2rem;
+            box-shadow: -6px 0 40px rgba(0,0,0,0.4);
+            z-index: 99;
+        }
+
+        .nav-links.open a { font-size: 1rem; letter-spacing: 0.1em; }
+    </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+    <a href="#home" class="nav-logo">Bridge of Allan <span>Stone</span></a>
+    <ul class="nav-links" id="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#portfolio">Projects</a></li>
+        <li><a href="#testimonials">Testimonials</a></li>
+        <li><a href="#contact" class="nav-cta">Get a Quote</a></li>
+    </ul>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+    </button>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+    <div class="hero-slides" id="hero-slides">
+        <div class="hero-slide active" style="background-image:url('http://www.bridgeofallanstone.co.uk/images/testimonials/new-construction-garden-complete.jpg')"></div>
+        <div class="hero-slide" style="background-image:url('http://www.bridgeofallanstone.co.uk/images/testimonials/st-marks-church-complete.jpg')"></div>
+        <div class="hero-slide" style="background-image:url('http://www.bridgeofallanstone.co.uk/images/testimonials/entrance-posts-repaired-complete-1.jpg')"></div>
+        <div class="hero-slide" style="background-image:url('http://www.bridgeofallanstone.co.uk/images/testimonials/gable-end-fife-3.jpg')"></div>
+        <div class="hero-slide" style="background-image:url('http://www.bridgeofallanstone.co.uk/images/testimonials/new-garden-wall-slabbing-complete.jpg')"></div>
+        <div class="hero-slide" style="background-image:url('http://www.bridgeofallanstone.co.uk/images/testimonials/garage-2.jpg')"></div>
+    </div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+        <p class="hero-eyebrow">Master Stonemason &middot; Stirling, Scotland</p>
+        <h1 class="hero-title">Thirty years.<br><em>Scotland's finest stones.</em></h1>
+        <p class="hero-subtitle">From Stirling Castle to your garden wall — heritage restoration, new build, and bespoke stonework across Scotland.</p>
+        <div class="hero-actions">
+            <a href="#contact" class="btn btn-primary">Request a Quote</a>
+            <a href="#portfolio" class="btn btn-outline">View Projects</a>
+        </div>
+    </div>
+    <div class="hero-indicators" id="hero-indicators"></div>
+</section>
+
+<!-- CREDENTIALS -->
+<div class="credentials">
+    <div class="cred-track">
+        <div class="cred-set">
+            <span class="cred-name">Stirling Castle</span><span class="cred-dot"></span>
+            <span class="cred-name">Wallace Monument</span><span class="cred-dot"></span>
+            <span class="cred-name">Church of the Holy Rude</span><span class="cred-dot"></span>
+            <span class="cred-name">Scottish Parliament</span><span class="cred-dot"></span>
+            <span class="cred-name">St Andrews University</span><span class="cred-dot"></span>
+            <span class="cred-name">Hyndland High School, Glasgow</span><span class="cred-dot"></span>
+            <span class="cred-name">Historic Scotland Approved</span><span class="cred-dot"></span>
+        </div>
+        <div class="cred-set">
+            <span class="cred-name">Stirling Castle</span><span class="cred-dot"></span>
+            <span class="cred-name">Wallace Monument</span><span class="cred-dot"></span>
+            <span class="cred-name">Church of the Holy Rude</span><span class="cred-dot"></span>
+            <span class="cred-name">Scottish Parliament</span><span class="cred-dot"></span>
+            <span class="cred-name">St Andrews University</span><span class="cred-dot"></span>
+            <span class="cred-name">Hyndland High School, Glasgow</span><span class="cred-dot"></span>
+            <span class="cred-name">Historic Scotland Approved</span><span class="cred-dot"></span>
+        </div>
+    </div>
+</div>
+
+<!-- ABOUT -->
+<section class="section" id="about">
+    <div class="container">
+        <div class="about-grid">
+            <div class="about-image-wrap fade-up">
+                <div class="about-image-border"></div>
+                <img src="http://www.bridgeofallanstone.co.uk/images/testimonials/st-marks-church-complete.jpg"
+                     alt="Malcolm Conway's completed work at St Mark's Church, Stirling" loading="lazy">
+            </div>
+            <div class="about-text fade-up">
+                <span class="section-label">About Malcolm Conway</span>
+                <h2>Time-served craftsman.<br>Scotland's stone, his material.</h2>
+                <div class="about-stats">
+                    <div class="stat">
+                        <div class="stat-number">30+</div>
+                        <div class="stat-label">Years Experience</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">1994</div>
+                        <div class="stat-label">Qualified, Glasgow College</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">4 yr</div>
+                        <div class="stat-label">Apprenticeship Served</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">26+</div>
+                        <div class="stat-label">Completed Projects Shown</div>
+                    </div>
+                </div>
+                <p>Malcolm Conway qualified in Advanced Craft and Stonemasonry from Glasgow College of Building and Printing in 1994, having served a rigorous four-year apprenticeship. In the three decades since, he has built one of Scotland's most trusted names in stone.</p>
+                <p>His work spans the nation's most celebrated buildings — Stirling Castle, the Wallace Monument, the Church of Holy Rude, the Scottish Parliament — and the homes and gardens of families across Stirling, Fife, Edinburgh and Glasgow who simply want the job done right.</p>
+                <p>Every project, large or small, is approached with the same care: the right stone, the right mortar, done once and done well.</p>
+                <a href="#contact" class="btn btn-primary" style="margin-top:1.75rem">Discuss Your Project</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SERVICES -->
+<section class="section section--stone" id="services">
+    <div class="container">
+        <div class="services-header fade-up">
+            <span class="section-label">What We Do</span>
+            <h2>Services</h2>
+        </div>
+        <div class="services-grid">
+
+            <div class="service-card fade-up">
+                <svg class="service-icon" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M6 34 h28 M8 34 V22 M32 34 V22 M4 22 h32 M12 22 V14 M28 22 V14 M10 14 h20 M16 14 V8 M24 14 V8 M14 8 h12"/>
+                </svg>
+                <h3>Heritage &amp; Listed Building Restoration</h3>
+                <p>Sympathetic repair and restoration of historic properties using traditional techniques and period-appropriate materials. Fully conversant with Historic Scotland requirements and conservation standards.</p>
+            </div>
+
+            <div class="service-card fade-up">
+                <svg class="service-icon" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+                    <rect x="4" y="10" width="32" height="7" rx="0.5"/>
+                    <rect x="4" y="22" width="32" height="7" rx="0.5"/>
+                    <path d="M10 10 V6 M20 10 V6 M30 10 V6 M10 22 V17 M20 22 V17 M30 22 V17"/>
+                </svg>
+                <h3>Lime Mortar Repointing</h3>
+                <p>Specialist repointing using traditional lime mortars to preserve and protect Victorian, Edwardian, and older stonework. Prevents moisture damage while maintaining the breathability historic buildings require.</p>
+            </div>
+
+            <div class="service-card fade-up">
+                <svg class="service-icon" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M8 36 V18 L20 6 L32 18 V36"/>
+                    <path d="M4 36 h32"/>
+                    <rect x="16" y="24" width="8" height="12"/>
+                    <path d="M20 6 V4"/>
+                </svg>
+                <h3>New Build Stonework</h3>
+                <p>New construction in natural stone — garages, gable ends, boundary walls, and structural elements built to match or complement existing period properties. Extensions that look like they were always there.</p>
+            </div>
+
+            <div class="service-card fade-up">
+                <svg class="service-icon" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+                    <rect x="6" y="8" width="28" height="24" rx="0.5"/>
+                    <path d="M6 18 h28"/>
+                    <path d="M16 8 v10"/>
+                    <path d="M24 8 v10"/>
+                    <path d="M6 30 h28"/>
+                    <rect x="15" y="19" width="10" height="11"/>
+                </svg>
+                <h3>Windows, Cills &amp; Entrances</h3>
+                <p>Repair and replacement of sandstone window cills, door surrounds, entrance pillars, and threshold steps. Sourcing stone to match original material for a seamless, invisible repair.</p>
+            </div>
+
+            <div class="service-card fade-up">
+                <svg class="service-icon" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 36 h32"/>
+                    <path d="M8 36 V28 h6 V36"/>
+                    <path d="M26 36 V28 h6 V36"/>
+                    <path d="M14 28 h12"/>
+                    <ellipse cx="20" cy="22" rx="4" ry="4"/>
+                    <path d="M20 18 V12"/>
+                    <path d="M14 16 l6 -4 6 4"/>
+                </svg>
+                <h3>Garden Features &amp; Landscaping</h3>
+                <p>Bespoke stone features for outdoor living — fire pits, seating areas, retaining walls, paving, and decorative stonework. Crafted to the same exacting standard as any structural work.</p>
+            </div>
+
+            <div class="service-card fade-up">
+                <svg class="service-icon" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="14" y="4" width="12" height="8"/>
+                    <path d="M14 12 L8 22 V36 h24 V22 L26 12"/>
+                    <path d="M8 22 h24"/>
+                    <path d="M4 36 h32"/>
+                </svg>
+                <h3>Chimneys, Steps &amp; Walls</h3>
+                <p>Taking down and rebuilding damaged chimneys, repairing exterior steps, and rebuilding boundary walls using original or matched stone. Structural integrity restored to last another century.</p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section class="section" id="portfolio">
+    <div class="container">
+        <div class="portfolio-header fade-up">
+            <div>
+                <span class="section-label">Our Work</span>
+                <h2>Projects</h2>
+            </div>
+            <div class="portfolio-filters" id="filters">
+                <button class="filter-btn active" data-f="all">All</button>
+                <button class="filter-btn" data-f="restoration">Restoration</button>
+                <button class="filter-btn" data-f="new-build">New Build</button>
+                <button class="filter-btn" data-f="garden">Garden</button>
+                <button class="filter-btn" data-f="heritage">Heritage</button>
+            </div>
+        </div>
+        <div class="portfolio-masonry" id="portfolio-grid"></div>
+    </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section section--dark" id="testimonials">
+    <div class="container">
+        <div class="testimonials-header fade-up">
+            <span class="section-label">What Clients Say</span>
+            <h2>Testimonials</h2>
+        </div>
+        <div class="testimonials-grid">
+
+            <div class="testimonial-card fade-up">
+                <span class="t-quote">&ldquo;</span>
+                <p class="t-text">Malcolm has been incredibly professional from design stage through to build and completion — a true master of his craft. He worked from our embarrassingly basic drawings and created a beautiful, perfectly symmetrical firepit using new sandstone, and was happy to recycle old sandstone bricks from our garden for the bench bases.</p>
+                <p class="t-project">Firepit &amp; Sandstone Seating &mdash; King's Park, Stirling</p>
+                <p class="t-author">— Jo Mickel</p>
+            </div>
+
+            <div class="testimonial-card fade-up">
+                <span class="t-quote">&ldquo;</span>
+                <p class="t-text">We are delighted with how beautiful the stonework looks and how in keeping it is with the original 1896 property. Our heartfelt thanks for all your design input, patience and passion for the project — and for completing on time and under budget.</p>
+                <p class="t-project">Basement Extension &mdash; King's Park, Stirling</p>
+                <p class="t-author">— Dr Raymond Ross</p>
+            </div>
+
+            <div class="testimonial-card fade-up">
+                <span class="t-quote">&ldquo;</span>
+                <p class="t-text">It was clear from the outset that Malcolm understood the requirements for undertaking renovation works to this 150-year-old listed building. Historic Scotland were happy with the end product — and perhaps more importantly, so were we.</p>
+                <p class="t-project">Listed Building Repointing &mdash; King's Park, Stirling</p>
+                <p class="t-author">— Graham McInally</p>
+            </div>
+
+            <div class="testimonial-card fade-up">
+                <span class="t-quote">&ldquo;</span>
+                <p class="t-text">Malcolm was punctual, clean, tidy and reliable. He delivered a first class job with little or no fuss, well organised. I would have no hesitation in recommending him for any stone work, large or small. A first class job from an A1 tradesman.</p>
+                <p class="t-project">New Build Garage &mdash; Bridge of Allan</p>
+                <p class="t-author">— John Quinn</p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section" id="contact">
+    <div class="container">
+        <div class="contact-grid">
+            <div class="contact-info fade-up">
+                <span class="section-label">Get in Touch</span>
+                <h2>Request a Quote</h2>
+                <p>Tell Malcolm about your project using the form. The more detail you share — project type, property age, location, timescale — the more useful his response will be.</p>
+                <p>Prefer to reach him directly:</p>
+                <div class="contact-direct">
+                    <a href="tel:07729773209" class="contact-link">
+                        <svg class="cl-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.95 13a19.79 19.79 0 01-3.07-8.67A2 2 0 012.86 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+                        </svg>
+                        <div>
+                            <span class="cl-text">07729 773209</span>
+                            <span class="cl-sub">Call Malcolm directly</span>
+                        </div>
+                    </a>
+                    <a href="https://wa.me/447729773209" target="_blank" rel="noopener" class="contact-link">
+                        <svg class="cl-icon" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                        </svg>
+                        <div>
+                            <span class="cl-text">WhatsApp</span>
+                            <span class="cl-sub">Send photos of your project</span>
+                        </div>
+                    </a>
+                    <a href="mailto:info@bridgeofallanstone.co.uk" class="contact-link">
+                        <svg class="cl-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                            <polyline points="22,6 12,13 2,6"/>
+                        </svg>
+                        <div>
+                            <span class="cl-text">info@bridgeofallanstone.co.uk</span>
+                            <span class="cl-sub">Email for detailed enquiries</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="fade-up">
+                <form class="contact-form" id="contact-form" action="mailto:info@bridgeofallanstone.co.uk" method="post" enctype="text/plain">
+                    <div class="form-group">
+                        <label for="name">Full Name *</label>
+                        <input type="text" id="name" name="name" required placeholder="Your name">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number *</label>
+                        <input type="tel" id="phone" name="phone" required placeholder="07xxx xxxxxx">
+                    </div>
+                    <div class="form-group span2">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" required placeholder="you@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="ptype">Project Type *</label>
+                        <select id="ptype" name="project_type" required>
+                            <option value="" disabled selected>Select&hellip;</option>
+                            <option>Heritage / Listed Building Restoration</option>
+                            <option>Lime Mortar Repointing</option>
+                            <option>New Build Stonework</option>
+                            <option>Windows, Cills &amp; Entrances</option>
+                            <option>Garden Features &amp; Landscaping</option>
+                            <option>Chimneys, Steps &amp; Walls</option>
+                            <option>Other / Not Sure</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="proptype">Property Type</label>
+                        <select id="proptype" name="property_type">
+                            <option value="" disabled selected>Select&hellip;</option>
+                            <option>Victorian / Edwardian</option>
+                            <option>Listed Building</option>
+                            <option>Modern / Post-war</option>
+                            <option>New Build Property</option>
+                            <option>Commercial / Institutional</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="location">Location / Town</label>
+                        <input type="text" id="location" name="location" placeholder="e.g. Bridge of Allan, Stirling">
+                    </div>
+                    <div class="form-group">
+                        <label for="timeline">Approximate Timeline</label>
+                        <select id="timeline" name="timeline">
+                            <option value="" disabled selected>Select&hellip;</option>
+                            <option>As soon as possible</option>
+                            <option>1–3 months</option>
+                            <option>3–6 months</option>
+                            <option>Early planning stage</option>
+                        </select>
+                    </div>
+                    <div class="form-group span2">
+                        <label for="message">Describe Your Project *</label>
+                        <textarea id="message" name="message" required placeholder="Please describe the work needed — include the stone type if known, approximate size, and any access considerations."></textarea>
+                    </div>
+                    <div class="form-submit">
+                        <button type="submit" class="btn btn-primary">Send Enquiry &rarr;</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div>
+                <span class="footer-brand">Bridge of Allan <span>Stone</span></span>
+                <p class="footer-tagline">Master stonemason Malcolm Conway. Thirty years of heritage restoration, new build, and bespoke stonework across Scotland.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="#services">Heritage Restoration</a></li>
+                    <li><a href="#services">Lime Mortar Repointing</a></li>
+                    <li><a href="#services">New Build Stonework</a></li>
+                    <li><a href="#services">Garden Features</a></li>
+                    <li><a href="#services">Chimneys &amp; Steps</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <ul>
+                    <li><a href="tel:07729773209">07729 773209</a></li>
+                    <li><a href="mailto:info@bridgeofallanstone.co.uk">info@bridgeofallanstone.co.uk</a></li>
+                    <li><a href="https://wa.me/447729773209" target="_blank" rel="noopener">WhatsApp</a></li>
+                    <li><a href="https://www.facebook.com/bridgeofallanstone" target="_blank" rel="noopener">Facebook</a></li>
+                </ul>
+                <address class="footer-address">
+                    20 Glebe Avenue<br>
+                    King's Park, Stirling<br>
+                    FK8 2HZ
+                </address>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>&copy; 2026 Bridge of Allan Stone &middot; Malcolm Conway</span>
+            <a href="https://www.facebook.com/bridgeofallanstone" target="_blank" rel="noopener" class="footer-fb">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                </svg>
+                Facebook
+            </a>
+        </div>
+    </div>
+</footer>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true">
+    <div class="lightbox-inner">
+        <button class="lightbox-close" id="lb-close" aria-label="Close">&times;</button>
+        <button class="lb-nav lb-prev" id="lb-prev" aria-label="Previous">&#8592;</button>
+        <img class="lightbox-img" id="lb-img" src="" alt="">
+        <p class="lightbox-caption" id="lb-cap"></p>
+        <button class="lb-nav lb-next" id="lb-next" aria-label="Next">&#8594;</button>
+    </div>
+</div>
+
+<script>
+const BASE = 'http://www.bridgeofallanstone.co.uk/images/testimonials/';
+
+const PROJECTS = [
+    { t:'Firepit & Sandstone Seating',          loc:"King's Park, Stirling",      cat:'garden',      img:'new-construction-garden-complete.jpg' },
+    { t:'New Build Garage',                      loc:'Bridge of Allan',            cat:'new-build',   img:'garage-2.jpg' },
+    { t:"St Mark's Church Pillars",              loc:'Stirling',                   cat:'heritage',    img:'st-marks-church-complete.jpg' },
+    { t:'Stone Entrance Pillars',                loc:'Kenilworth Road, Bridge of Allan', cat:'restoration', img:'entrance-posts-repaired-complete-1.jpg' },
+    { t:'New Build Gable End',                   loc:'New House Farm, Fife',       cat:'new-build',   img:'gable-end-fife-3.jpg' },
+    { t:'New Garden Wall & Slabbing',            loc:"King's Park, Stirling",      cat:'garden',      img:'new-garden-wall-slabbing-complete.jpg' },
+    { t:'Gable Repointing — Listed Building',   loc:"King's Park, Stirling",      cat:'heritage',    img:'gable-end-repointing-2.jpg' },
+    { t:'Rebuild Damaged Chimney',               loc:"King's Park, Stirling",      cat:'restoration', img:'take-down-rebuild-chimney-after-2022.jpg' },
+    { t:'Sandstone Wall Repair',                 loc:"Victoria Square, King's Park", cat:'restoration', img:'sandstone-wall-repair-complete.jpg' },
+    { t:'Retaining Wall',                        loc:'Hyndland School, Glasgow',   cat:'new-build',   img:'Hyndland-School-Glasgow-Retaining-Wall-2.jpg' },
+    { t:'Door Surround Restoration',             loc:"King's Park, Stirling",      cat:'restoration', img:'Door-Surround-Kings-Park-Stirling-After.jpg' },
+    { t:"Boundary Wall Rebuilt",                 loc:"Queen's Lane, Bridge of Allan", cat:'restoration', img:'queens-lane-rubble-wall-after.jpg' },
+    { t:'Door Jamb Replacement',                 loc:'Blairlogie House',           cat:'heritage',    img:'front-door-entrance-stonework-complete.jpg' },
+    { t:'Gable Repair — Lime Mortar',           loc:"King's Park, Stirling",      cat:'restoration', img:'gable-repoint-lime-mortar-after-1-2022.jpg' },
+    { t:'Steps Cleaned & Repaired',             loc:"Park Terrace, King's Park",  cat:'restoration', img:'Five-front-stone-steps-repair-complete.jpg' },
+    { t:'Window Cill Replacement',               loc:"King's Park, Stirling",      cat:'restoration', img:'window-cill-repair-complete.jpg' },
+    { t:'Three Window Cills',                    loc:'Blairlogie House',           cat:'restoration', img:'three-window-cill-repair-complete.jpg' },
+    { t:'Domestic Boundary Wall',                loc:'Edinburgh',                  cat:'new-build',   img:'Domestic-Boundary-Wall-Edinburgh-After.jpg' },
+    { t:'Random Rubble Entrance',                loc:'Edinburgh',                  cat:'new-build',   img:'Entrance-to-New-Build-Apartment-Block-Random-Rubble-Edinburgh-After.jpg' },
+    { t:'Repair Damaged Cills',                  loc:'Bridge of Allan',            cat:'restoration', img:'repair-damaged-cills-after_2022.jpg' },
+    { t:'Steps Repaired & Paved',               loc:"King's Park, Stirling",      cat:'garden',      img:'clean-repair-steps-after-2022.jpg' },
+    { t:'Driveway Widened',                      loc:"King's Park, Stirling",      cat:'new-build',   img:'widen-driveway-after-2022.jpg' },
+    { t:'Boundary Wall Repointed',               loc:'Bridge of Allan',            cat:'restoration', img:'rubble-wall-repointed-repaired-complete.jpg' },
+    { t:'Front Step Widened & Rebuilt',         loc:'Cambusbarron, Stirling',     cat:'restoration', img:'front-step-repair-complete.jpg' },
+    { t:'Garden Wall Rebuilt',                   loc:"King's Park, Stirling",      cat:'restoration', img:'damaged-wall-rebuild-after-2022.jpg' },
+    { t:'Small Wall Rebuilt',                    loc:"King's Park, Stirling",      cat:'new-build',   img:'rebuild-small-wall-driveway-after-2022.jpg' },
+];
+
+// ── BUILD PORTFOLIO ─────────────────────────────────────────
+const grid = document.getElementById('portfolio-grid');
+const items = [];
+
+PROJECTS.forEach((p, i) => {
+    const el = document.createElement('div');
+    el.className = 'portfolio-item';
+    el.dataset.cat = p.cat;
+    el.innerHTML = `
+        <img src="${BASE}${p.img}" alt="${p.t}" loading="lazy">
+        <div class="portfolio-overlay">
+            <div class="portfolio-label">${p.t}<small>${p.loc}</small></div>
+        </div>`;
+    el.addEventListener('click', () => openLb(i));
+    grid.appendChild(el);
+    items.push(el);
+});
+
+// ── FILTER ──────────────────────────────────────────────────
+document.getElementById('filters').addEventListener('click', e => {
+    const btn = e.target.closest('.filter-btn');
+    if (!btn) return;
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const f = btn.dataset.f;
+    items.forEach(el => el.classList.toggle('hidden', f !== 'all' && el.dataset.cat !== f));
+});
+
+// ── LIGHTBOX ────────────────────────────────────────────────
+let cur = 0;
+
+function visItems() {
+    return PROJECTS.map((p, i) => ({ ...p, i })).filter((_, i) => !items[i].classList.contains('hidden'));
+}
+
+function openLb(idx) {
+    cur = idx;
+    const p = PROJECTS[idx];
+    document.getElementById('lb-img').src = BASE + p.img;
+    document.getElementById('lb-img').alt = p.t;
+    document.getElementById('lb-cap').textContent = `${p.t} — ${p.loc}`;
+    document.getElementById('lightbox').classList.add('open');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeLb() {
+    document.getElementById('lightbox').classList.remove('open');
+    document.body.style.overflow = '';
+}
+
+function stepLb(dir) {
+    const vis = visItems();
+    const pos = vis.findIndex(p => p.i === cur);
+    const next = vis[(pos + dir + vis.length) % vis.length];
+    openLb(next.i);
+}
+
+document.getElementById('lb-close').addEventListener('click', closeLb);
+document.getElementById('lb-prev').addEventListener('click', () => stepLb(-1));
+document.getElementById('lb-next').addEventListener('click', () => stepLb(1));
+document.getElementById('lightbox').addEventListener('click', e => { if (e.target === e.currentTarget) closeLb(); });
+document.addEventListener('keydown', e => {
+    if (!document.getElementById('lightbox').classList.contains('open')) return;
+    if (e.key === 'Escape') closeLb();
+    if (e.key === 'ArrowRight') stepLb(1);
+    if (e.key === 'ArrowLeft') stepLb(-1);
+});
+
+// ── HERO ROTATION ────────────────────────────────────────────
+const slides = document.querySelectorAll('.hero-slide');
+const dotsContainer = document.getElementById('hero-indicators');
+let activeSlide = 0;
+
+slides.forEach((_, i) => {
+    const d = document.createElement('button');
+    d.className = 'hero-dot' + (i === 0 ? ' active' : '');
+    d.setAttribute('aria-label', `Slide ${i + 1}`);
+    d.addEventListener('click', () => goSlide(i));
+    dotsContainer.appendChild(d);
+});
+
+function goSlide(n) {
+    slides[activeSlide].classList.remove('active');
+    dotsContainer.children[activeSlide].classList.remove('active');
+    activeSlide = n;
+    slides[activeSlide].classList.add('active');
+    dotsContainer.children[activeSlide].classList.add('active');
+}
+
+setInterval(() => goSlide((activeSlide + 1) % slides.length), 5000);
+
+// ── NAV SCROLL ───────────────────────────────────────────────
+window.addEventListener('scroll', () => {
+    document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 60);
+}, { passive: true });
+
+// ── MOBILE NAV ───────────────────────────────────────────────
+document.getElementById('nav-toggle').addEventListener('click', () => {
+    document.getElementById('nav-links').classList.toggle('open');
+});
+document.getElementById('nav-links').addEventListener('click', e => {
+    if (e.target.tagName === 'A') document.getElementById('nav-links').classList.remove('open');
+});
+
+// ── SCROLL ANIMATIONS ────────────────────────────────────────
+const obs = new IntersectionObserver(entries => {
+    entries.forEach(en => {
+        if (en.isIntersecting) { en.target.classList.add('visible'); obs.unobserve(en.target); }
+    });
+}, { threshold: 0.08 });
+
+document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
